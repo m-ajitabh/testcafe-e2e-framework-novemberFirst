@@ -18,7 +18,7 @@ createTestCafe('localhost', 1335, 1336)
         return runner
         // list multiple test files
             .src([
-                "tests/login-tests.js"
+                "tests/register-test.js","tests/login-tests.js"
             ])
             .browsers(['chrome --allow-insecure-localhost'])
             .screenshots('reports/screenshots/', true)
@@ -26,9 +26,9 @@ createTestCafe('localhost', 1335, 1336)
             .run({
                 skipJsErrors: true,
                 quarantineMode: false,
-                selectorTimeout: 10000,
-                assertionTimeout: 10000,
-                pageLoadTimeout: 10000,
+                selectorTimeout: 30000,
+                assertionTimeout: 30000,
+                pageLoadTimeout: 30000,
                 speed: 1
             });
     })

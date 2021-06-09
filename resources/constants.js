@@ -17,11 +17,11 @@ export function getCustomerNoURL() {
     return `${custURL}`;
 }
 export function getValidUserName() {
-    return "abc@def.com";
+    return "m.ajitabh@gmail.com";
 }
 
 export function getValidPassword() {
-    return "12345678";
+    return "November1";
 }
 
 export function getInvalidPassword() {
@@ -29,5 +29,5 @@ export function getInvalidPassword() {
 }
 
 export function getCustomerNumber() {
-    return "123456";
+    return "208101782";
 }

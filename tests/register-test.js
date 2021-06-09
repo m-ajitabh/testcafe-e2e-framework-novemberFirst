@@ -23,21 +23,24 @@ test
             console.log("--- Company details submitted successfully -----");
             getCustomerNo = await companyNoPage.csvNo.innerText;
 
-            await console.log(getCustomerNo);
+            await console.log(getCustomerNo);//10043794
     })('Test Register', async t => {
         await t.maximizeWindow();
-        console.log("----------- Registration process started ----------");    
+        console.log("----------- Registration process started ----------");   
+        await t.expect(registerPage.lang1.exists).ok().then(function(flag){ if(flag) console.log("Login link exist")}); 
     await t
     .navigateTo(constants.getLoginPageURL())
-        .click(registerPage.lang1)
+        .click(registerPage.regLink)
         .click(registerPage.lang2)
         .click(registerPage.selectEng)
         .typeText(registerPage.companyReg,getCustomerNo)
-        .typeText(registerPage.firstName, 'pqr')
-        .typeText(registerPage.lastName, 'pqr')
-        .typeText(registerPage.workEmail, 'pqr@pqr.com')
-        .typeText(registerPage.emailConfirmation, 'pqr@pqr.com')
+        .typeText(registerPage.firstName, 'aj')
+        .typeText(registerPage.lastName, 'dj')
+        .typeText(registerPage.workEmail, 'm.ajitabh@gmail.com')
+        .typeText(registerPage.emailConfirmation, 'm.ajitabh@gmail.com')
         .typeText(registerPage.phone, '1234567890')
         .click(registerPage.checkBox)
         .click(registerPage.registerSubmit);
+
+        await t.expect(registerPage.registerSuccess.innerText).contains("Please confirm your email");
 });

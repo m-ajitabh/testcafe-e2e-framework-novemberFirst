@@ -4,6 +4,7 @@ import Xpath from '../resources/xpath-selector';
 const xpath = new Xpath();
 export default class LoginPage {
     constructor() {
+        this.regLink = Selector('a').withText('Registrer nu');
         this.lang2 = Selector('#mat-select-value-1');
         this.selectEng = Selector('#mat-option-1 span').withText('English');
         this.customerNumber = Selector('#mat-input-0');
@@ -12,7 +13,7 @@ export default class LoginPage {
         this.loginButton = xpath('//button[@class="btn btn-primary btn-center"]');//Selector('//button[@class="btn btn-primary btn-center"]');
         
         //console.log(this.loginButton);
-        this.successMessage = Selector('.subheader').withText('Secure Area');
+        this.successCheck = Selector('#user-button');
 
         //this.logoutButton = Selector('button').withText('Logout');
         this.errorMessage = xpath('//*[@role="alert"]//*[@class="ng-star-inserted"]');//Selector('//*[@role="alert"]//*[@class="ng-star-inserted"]');

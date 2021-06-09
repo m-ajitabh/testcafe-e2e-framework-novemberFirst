@@ -12,6 +12,8 @@ fixture('Login')
 test('Valid Login', async t => {
     console.log("----------- Log in with valid credentials ----------");
     await t.maximizeWindow();
+    if(await loginPage.regLink.exists){ console.log("Registration link exist")}; 
+    if(await loginPage.forgetPassword.exists) {console.log("ForgetPassword link exist")}; 
     await t
         .click(loginPage.lang2)
         .click(loginPage.selectEng)
@@ -19,7 +21,10 @@ test('Valid Login', async t => {
         .typeText(loginPage.email, constants.getValidUserName())
         .typeText(loginPage.password, constants.getValidPassword())
         .click(loginPage.loginButton);
+        
+        await t.expect(login.successCheck.exists).ok("Logged In successfully");
 
+        //if(await loginPage.successCheck.exists) {console.log("Logged In successfully")};
 
 });
 
@@ -40,4 +45,5 @@ test('Invalid Login', async t => {
         var errorMsg = await loginPage.errorMessage.innerText;//Selector('#mat-error-9 .ng-star-inserted').innerText;
         
         console.log(errorMsg);
+        await t.expect(login.successCheck.exists).notOk("Log In unsuccessful");
 });

@@ -9,21 +9,16 @@ const loginPage = new LoginPage();
 export const validCredentials = Role(constants.getLoginPageURL(), async t => {
     await t.maximizeWindow();
     await t.typeText(loginPage.customerNumber, constants.getCustomerNumber());
-    await t.typeText(loginPage.email, constants.getemail());
-    await t.typeText(loginPage.password, constants.getPassword());
+    await t.typeText(loginPage.email, constants.getValidUserName());
+    await t.typeText(loginPage.password, constants.getValidPassword());
     await t.click(loginPage.loginButton);
 }, { preserveUrl: true });
 
 export const invalidCredentials = Role(constants.getLoginPageURL(), async t => {
-   /* await t.maximizeWindow();
-    await t.typeText(loginPage.userName, `invalidUserName`);
-    await t.typeText(loginPage.password, constants.getPassword());
-    await t.click(loginPage.loginButton);*/
-
-
+   
     await t.typeText(loginPage.customerNumber, constants.getCustomerNumber());
-    await t.typeText(loginPage.email, `dfad@sadas.com`);
-    await t.typeText(loginPage.password, constants.getPassword());
+    await t.typeText(loginPage.email, constants.getValidUserName());
+    await t.typeText(loginPage.password, constants.getInvalidPassword());
     await t.click(loginPage.loginButton);
 
 }, { preserveUrl: true });
